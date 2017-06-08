@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements InputFragment.Lis
     }
 
     
-
     @Override
     public void onInputAction(String input,String result) {
         Bundle bundle = new Bundle();
