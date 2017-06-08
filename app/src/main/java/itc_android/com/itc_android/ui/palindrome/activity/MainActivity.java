@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements InputFragment.Lis
                 .replace(R.id.flMain,inputFragment,inputFragment.getTag())
                 .commit();
     }
+    
 
     @Override
     public void onInputAction(String input,String result) {
