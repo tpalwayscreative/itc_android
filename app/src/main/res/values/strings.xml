@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">" itc_android"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_go_to_input">Go to input</string>
+    <string name="tv_go_to_result">Go to result</string>
+    <string name="tv_check_palindrome">Check Palindrome</string>
+    <string name="tv_back">Back</string>
 </resources>
