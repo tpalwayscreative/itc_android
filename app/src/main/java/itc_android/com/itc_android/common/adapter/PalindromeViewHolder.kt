@@ -11,7 +11,7 @@ class PalindromeViewHolder(context: Context) : BaseViewHolder<CPalindrome>(conte
   override fun layoutResId(): Int = R.layout.item_result
 
   override fun bind(item: CPalindrome) {
-    tvValue.text = item.value
+    tvValue.text = item.value +  "  ===>  "
     tvResult.text = item.result
   }
 
