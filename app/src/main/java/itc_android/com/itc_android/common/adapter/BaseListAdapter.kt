@@ -23,6 +23,11 @@ abstract class BaseListAdapter<T : Parcelable> : RecyclerView.Adapter<BaseListAd
     notifyItemRangeInserted(0, itemsToAdd.size)
   }
 
+  fun addItemstotFirst(itemsToAdd: T){
+    items.add(0,itemsToAdd)
+    notifyItemRangeInserted(0, items.size)
+  }
+
   override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder = ViewHolder(getListItemView(viewGroup.context))
 
   override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.view.bind(items[position])

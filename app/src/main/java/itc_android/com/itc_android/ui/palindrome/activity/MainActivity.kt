@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity(), InputFragment.ListenerInput, ResultFra
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-       // requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         inputFragment = InputFragment()
         fragmentManager = supportFragmentManager
         inputFragment!!.setListenerInput(this)
@@ -55,11 +53,4 @@ class MainActivity : AppCompatActivity(), InputFragment.ListenerInput, ResultFra
                 .commit()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 111 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Log.d("action", "Grandted successfully")
-            Utils.setAutoOrientationEnabled(applicationContext, true)
-        }
-    }
 }

@@ -54,7 +54,6 @@ class ResultFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        adapter.clearItems();
         var bundle = Bundle()
         bundle = arguments
         val value = bundle.getString(Constant.TAG_VALUE)
@@ -64,8 +63,13 @@ class ResultFragment : Fragment() {
         } else {
             tvResult!!.text = value + " : " + " is not a palindrome"
         }
-        list!!.add(CPalindrome(value, result))
-        adapter!!.addItems(list!!)
+        if (list == null){
+            list!!.add(CPalindrome(value, result))
+            adapter!!.addItems(list!!)
+        }
+        else{
+            adapter!!.addItemstotFirst(CPalindrome(value, result))
+        }
     }
 
 
