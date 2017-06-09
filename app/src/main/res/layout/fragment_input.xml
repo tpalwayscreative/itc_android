@@ -30,12 +30,17 @@
             android:layout_width="match_parent"
             android:layout_height="40dp" />
         <Button
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"
             android:layout_marginTop="20dp"
             android:text="@string/tv_check_palindrome"
             android:id="@+id/btnInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-   </LinearLayout>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
