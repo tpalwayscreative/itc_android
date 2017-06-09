@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity implements InputFragment.Lis
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         inputFragment = new InputFragment();
         fragmentManager = getSupportFragmentManager();
         inputFragment.setListenerInput(this);
