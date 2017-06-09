@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -86,6 +87,7 @@ public class ResultFragment extends Fragment implements ResultAdapter.ListenerRe
             tvResult.setText(value +" : "+" is not a palindrome");
         }
         list.add(new CPalindrome(value,result));
+        Collections.reverse(list);
         adapter.setDataSource(list);
     }
 
