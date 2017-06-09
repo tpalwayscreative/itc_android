@@ -1,6 +1,5 @@
 package itc_android.com.itc_android.ui.palindrome.fragment
 
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -9,15 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-
-import java.nio.Buffer
-
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
-import butterknife.Unbinder
 import itc_android.com.itc_android.R
 import itc_android.com.itc_android.common.utils.Utils
+import kotlinx.android.synthetic.main.fragment_input.*
+import kotlinx.android.synthetic.main.fragment_input.view.*
+import kotlinx.android.synthetic.main.fragment_result.view.*
 
 
 /**
@@ -26,11 +21,6 @@ import itc_android.com.itc_android.common.utils.Utils
 class InputFragment : Fragment() {
 
     private var listenerInput: ListenerInput? = null
-    @BindView(R.id.btnInput)
-    internal var btnInput: Button? = null
-    @BindView(R.id.edtInput)
-    internal var editText: EditText? = null
-    private var unbinder: Unbinder? = null
 
     fun setListenerInput(listenerInput: ListenerInput) {
         this.listenerInput = listenerInput
@@ -40,18 +30,16 @@ class InputFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_input, container, false)
-        unbinder = ButterKnife.bind(this, view)
+
+        view.btnInput.setOnClickListener({
+            val edtValue = view.edtInput!!.text.toString()
+            if (!Utils.isCheckEmpty(edtValue)) {
+               val value = Utils.sanitize(edtValue)
+               listenerInput!!.onInputAction(edtValue, "" + Utils.isPalindrome(value))
+            }
+        });
+
         return view
-    }
-
-    @OnClick(R.id.btnInput)
-    fun onClickInput() {
-        val edtValue = editText!!.text.toString()
-        if (!Utils.isCheckEmpty(edtValue)) {
-            val value = Utils.sanitize(edtValue)
-            listenerInput!!.onInputAction(editText!!.text.toString(), "" + Utils.isPalindrome(value))
-        }
-
     }
 
     interface ListenerInput {
@@ -60,6 +48,5 @@ class InputFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unbinder!!.unbind()
     }
 }

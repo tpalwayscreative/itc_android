@@ -3,70 +3,58 @@ package itc_android.com.itc_android.ui.palindrome.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-
 import java.util.ArrayList
-
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
-import butterknife.Unbinder
+import com.michaldrabik.kotlintest.utilities.extensions.dpToPx
 import itc_android.com.itc_android.Constant
 import itc_android.com.itc_android.R
 import itc_android.com.itc_android.model.CPalindrome
+import kotlinx.android.synthetic.main.fragment_result.view.*
+import javax.inject.Inject
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class ResultFragment : Fragment(), ResultAdapter.ListenerResultAdapter {
+class ResultFragment : Fragment() {
 
-    @BindView(R.id.btnResult)
-    internal var btnResult: Button? = null
-    @BindView(R.id.tvResult)
-    internal var tvResult: TextView? = null
-    @BindView(R.id.rc_Item)
-    internal var recyclerView: RecyclerView? = null
     private var listenerResult: ListenerResult? = null
-    private var adapter: ResultAdapter? = null
-    private var unbinder: Unbinder? = null
+    @Inject lateinit var adapter: ResultAdapter
     private var list: MutableList<CPalindrome>? = null
-    private var llm: LinearLayoutManager? = null
+    private var tvResult : TextView? = null
 
     fun setListenerResult(listenerResult: ListenerResult) {
         this.listenerResult = listenerResult
-        list = ArrayList<CPalindrome>()
-
+        list = ArrayList();
+        adapter = ResultAdapter();
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_result, container, false)
-        unbinder = ButterKnife.bind(this, view)
-        setupRecyclerView()
+        onClickResult(view)
+        setupRecycler(view)
         return view
     }
 
-    fun setupRecyclerView() {
-        llm = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        recyclerView!!.layoutManager = llm
-        adapter = ResultAdapter(activity.layoutInflater, activity, this)
-        recyclerView!!.adapter = adapter
-    }
-
-    override fun onItemClicked(position: Int) {
-
+    private fun setupRecycler(view : View) {
+        tvResult = view.tvResult
+        view.recyclerView!!.setHasFixedSize(true)
+        view.recyclerView!!.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL, false)
+        view.recyclerView!!.addItemDecoration(com.michaldrabik.kotlintest.utilities.DividerItemDecoration(activity, LinearLayoutManager.VERTICAL, 8.dpToPx(activity)))
+        view.recyclerView!!.adapter = adapter
     }
 
     override fun onResume() {
         super.onResume()
+        adapter.clearItems();
         var bundle = Bundle()
         bundle = arguments
         val value = bundle.getString(Constant.TAG_VALUE)
@@ -77,17 +65,18 @@ class ResultFragment : Fragment(), ResultAdapter.ListenerResultAdapter {
             tvResult!!.text = value + " : " + " is not a palindrome"
         }
         list!!.add(CPalindrome(value, result))
-        adapter!!.dataSource = list
+        adapter!!.addItems(list!!)
     }
 
-    @OnClick(R.id.btnResult)
-    fun onClickResult() {
-        listenerResult!!.onResultAction()
+
+    fun onClickResult(view : View) {
+        view.btnResult.setOnClickListener({
+            listenerResult!!.onResultAction()
+        });
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        unbinder!!.unbind()
     }
 
     interface ListenerResult {

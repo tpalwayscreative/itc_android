@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-
 import itc_android.com.itc_android.Constant
 import itc_android.com.itc_android.ui.palindrome.fragment.InputFragment
 import itc_android.com.itc_android.R
@@ -22,8 +21,8 @@ class MainActivity : AppCompatActivity(), InputFragment.ListenerInput, ResultFra
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+       // requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+       // requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         inputFragment = InputFragment()
         fragmentManager = supportFragmentManager
         inputFragment!!.setListenerInput(this)
