@@ -9,6 +9,10 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import itc_android.com.itc_android.R;
 import itc_android.com.itc_android.common.presenter.Presenter;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by PC on 7/4/2017.
@@ -19,8 +23,30 @@ public class FTPConnectionPresenter extends Presenter<FTPConnectionView> {
     private FTPClient ftp = null;
     private String tagName ;
 
+    /*
+       Resolve main thread
+
+    *  StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    *
+    *
+    *
+    * */
+
+
     public void connect()
     {
+
+       Observable.create(subscriber -> {
+            subscriber.onNext("");
+            subscriber.onCompleted();
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.computation())
+                .subscribe(data ->{
+
+                });
+
         FTPConnectionView view = view();
         view.showLoading();
         ftp = new FTPClient();
@@ -37,8 +63,7 @@ public class FTPConnectionPresenter extends Presenter<FTPConnectionView> {
         }
         try {
             ftp.setConnectTimeout(10 * 1000);
-            ftp.connect(InetAddress.getByName("ftp.tpalwayscreative.esy.es"),21);
-
+            ftp.connect(InetAddress.getByName("31.170.165.108"),21);
             if (FTPReply.isPositiveCompletion(ftp.getReply())){
                 boolean login = ftp.login(username,password);
                 System.out.println(" login "+ login );
@@ -56,7 +81,6 @@ public class FTPConnectionPresenter extends Presenter<FTPConnectionView> {
             connect();
         }
     }
-
 
     public void sleep(){
         try {
