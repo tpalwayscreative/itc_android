@@ -1,5 +1,6 @@
 package itc_android.com.itc_android.ui.ftpconnection.activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ public class FTPConnectionActivity extends AppCompatActivity implements FTPConne
         ftpConnectionPresenter = new FTPConnectionPresenter();
         ftpConnectionPresenter.bindView(this);
         ftpConnectionPresenter.setTagName(this.getClass().getSimpleName());
+        edtPassword.setTypeface(Typeface.DEFAULT);
     }
 
     @OnClick(R.id.btnConnect)
