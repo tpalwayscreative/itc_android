@@ -12,8 +12,5 @@ public class BaseHolder<V> extends RecyclerView.ViewHolder {
     }
 
     public void bind(V data, int position){}
-
     public void event(){}
-
-
 }

@@ -7,4 +7,9 @@
     <string name="tv_go_to_result">Go to result</string>
     <string name="tv_check_palindrome">Check Palindrome</string>
     <string name="tv_back">Back</string>
+    <string name="tv_show_histories">Show histories</string>
+    <string name="tv_connection_ftp">Connecting To FTP Server</string>
+    <string name="tv_connect">Connect</string>
+    <string name="tv_username">Input a username</string>
+    <string name="tv_password">Input a password</string>
 </resources>

@@ -48,7 +48,6 @@ public class ResultFragment extends Fragment implements ResultAdapter.ListenerRe
     public void setListenerResult(ListenerResult listenerResult){
         this.listenerResult = listenerResult ;
         list = new ArrayList<>();
-
     }
 
     @Override

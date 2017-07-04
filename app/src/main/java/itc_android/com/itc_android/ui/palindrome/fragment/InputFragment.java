@@ -1,16 +1,14 @@
 package itc_android.com.itc_android.ui.palindrome.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.nio.Buffer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,6 +16,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import itc_android.com.itc_android.R;
 import itc_android.com.itc_android.common.utils.Utils;
+import itc_android.com.itc_android.ui.ftpconnection.activity.FTPConnectionActivity;
+import itc_android.com.itc_android.ui.histories.activity.HistoriesActivity;
 
 
 /**
@@ -28,6 +28,10 @@ public class InputFragment extends Fragment {
     private ListenerInput listenerInput ;
     @BindView(R.id.btnInput)
     Button btnInput ;
+    @BindView(R.id.btnShowHistories)
+    Button btnShowHistories ;
+    @BindView(R.id.btnConnectFTP)
+    Button btnConnectingToFTP ;
     @BindView(R.id.edtInput)
     EditText editText ;
     private Unbinder unbinder;
@@ -56,7 +60,18 @@ public class InputFragment extends Fragment {
             String value = Utils.sanitize(edtValue);
             listenerInput.onInputAction(editText.getText().toString(),""+Utils.isPalindrome(value));
         }
+    }
 
+    @OnClick(R.id.btnShowHistories)
+    public void onClickShowHistories(){
+        Intent i = new Intent(getContext(), HistoriesActivity.class);
+        startActivity(i);
+    }
+
+    @OnClick(R.id.btnConnectFTP)
+    public void onClickConnectingToFTP(){
+        Intent i = new Intent(getContext(), FTPConnectionActivity.class);
+        startActivity(i);
     }
 
     public interface ListenerInput {
@@ -68,4 +83,5 @@ public class InputFragment extends Fragment {
         super.onDestroy();
         unbinder.unbind();
     }
+
 }

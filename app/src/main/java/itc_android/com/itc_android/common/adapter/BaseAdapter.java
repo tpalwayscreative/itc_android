@@ -4,11 +4,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 
 public class BaseAdapter<V, VH extends BaseHolder> extends RecyclerView.Adapter<VH> {
 
@@ -87,7 +85,6 @@ public class BaseAdapter<V, VH extends BaseHolder> extends RecyclerView.Adapter<
         this.dataSource.add(0, item);
         notifyItemInserted(0);
     }
-
 
     public void addAtFirstAndRemoveEnd(V item) {
         if (this.dataSource.isEmpty()) {

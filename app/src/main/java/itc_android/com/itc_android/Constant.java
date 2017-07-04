@@ -5,8 +5,6 @@ package itc_android.com.itc_android;
  */
 
 public class Constant {
-
     public static final String TAG_VALUE = "value";
     public static final String TAG_RESULT = "result";
-
 }

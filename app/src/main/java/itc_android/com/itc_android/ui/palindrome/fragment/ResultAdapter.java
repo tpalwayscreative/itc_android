@@ -22,11 +22,8 @@ import itc_android.com.itc_android.model.CPalindrome;
 
 public class ResultAdapter extends BaseAdapter<CPalindrome,BaseHolder> {
 
-
-
     private ListenerResultAdapter listenerResultAdapter ;
     private Activity activity ;
-
 
     public ResultAdapter(LayoutInflater inflater, Activity activity, ListenerResultAdapter listenerResultAdapter) {
         super(inflater);
@@ -51,7 +48,6 @@ public class ResultAdapter extends BaseAdapter<CPalindrome,BaseHolder> {
         private CPalindrome cPalindrome ;
         private int position ;
 
-
         public PortfoliosHolder(View itemView) {
             super(itemView);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.lnHomeItem);
@@ -63,6 +59,10 @@ public class ResultAdapter extends BaseAdapter<CPalindrome,BaseHolder> {
             this.position = position ;
             tvValue.setText(data.value + "  ===>  ");
             tvResult.setText(data.result);
+        }
+
+        public void showName(){
+
         }
 
         @OnClick(R.id.lnHomeItem)
@@ -80,7 +80,6 @@ public class ResultAdapter extends BaseAdapter<CPalindrome,BaseHolder> {
     public interface ListenerResultAdapter {
         void onItemClicked(int position);
     }
-
 
 
 }
