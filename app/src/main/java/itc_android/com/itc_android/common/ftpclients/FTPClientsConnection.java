@@ -69,8 +69,11 @@ public class FTPClientsConnection {
         else{
             listenerFTPConnection.onFTPConnection(ftpClient);
         }
-
     }
+
+
+
+
 
     public interface ListenerFTPConnection {
         void onFTPConnection(FTPClient ftpClient);

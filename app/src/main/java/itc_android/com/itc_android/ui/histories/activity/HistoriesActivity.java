@@ -4,10 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +16,7 @@ import itc_android.com.itc_android.R;
 import itc_android.com.itc_android.common.controller.RealmController;
 import itc_android.com.itc_android.common.realm.Palindrome;
 import itc_android.com.itc_android.model.CPalindrome;
-import itc_android.com.itc_android.ui.palindrome.fragment.ResultAdapter;
-import itc_android.com.itc_android.ui.palindrome.fragment.ResultFragment;
+import itc_android.com.itc_android.ui.palindrome.adapter.ResultAdapter;
 
 public class HistoriesActivity extends AppCompatActivity implements ResultAdapter.ListenerResultAdapter {
 

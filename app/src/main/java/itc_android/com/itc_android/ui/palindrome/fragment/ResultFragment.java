@@ -22,6 +22,7 @@ import butterknife.Unbinder;
 import itc_android.com.itc_android.Constant;
 import itc_android.com.itc_android.R;
 import itc_android.com.itc_android.model.CPalindrome;
+import itc_android.com.itc_android.ui.palindrome.adapter.ResultAdapter;
 
 
 /**

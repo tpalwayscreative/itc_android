@@ -1,4 +1,4 @@
-package itc_android.com.itc_android.ui.palindrome.fragment;
+package itc_android.com.itc_android.ui.palindrome.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="itc_android.com.itc_android">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -12,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.palindrome.activity.MainActivity">
+        <activity android:name=".ui.home.activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.histories.activity.HistoriesActivity" />
-        <activity android:name=".ui.ftpconnection.activity.FTPConnectionActivity"></activity>
+        <activity android:name=".ui.ftpconnection.activity.FTPConnectionActivity" />
+        <activity android:name=".ui.caruselayout.activity.CarouselActivity" />
+        <activity android:name=".ui.palindrome.activity.MainActivity"></activity>
     </application>
 
 </manifest>
