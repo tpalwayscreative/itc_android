@@ -23,6 +23,6 @@
             android:id="@+id/rc_Carousel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
