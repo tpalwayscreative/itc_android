@@ -12,4 +12,5 @@
     <string name="tv_connect">Connect</string>
     <string name="tv_username">Input a username</string>
     <string name="tv_password">Input a password</string>
+    <string name="tv_ChooseLayout">Choose Layout</string>
 </resources>
