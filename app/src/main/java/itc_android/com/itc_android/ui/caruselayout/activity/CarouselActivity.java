@@ -63,8 +63,7 @@ public class CarouselActivity extends AppCompatActivity implements CarouselAdapt
         llm.addOnItemSelectionListener(new CarouselLayoutManager.OnCenterItemSelectionListener() {
             @Override
             public void onCenterItemChanged(int adapterPosition) {
-                //updateViews(adapterPosition);
-                updatedView();
+                updatedView(adapterPosition);
             }
         });
 
@@ -75,28 +74,38 @@ public class CarouselActivity extends AppCompatActivity implements CarouselAdapt
 
 
     public void updateViews(int position){
-        if (list.size()>0) {
-            if(position ==0){
-                list.get(position).visible = true;
+
+
+        Observable.create(subscriber -> {
+            if (list.size()>0) {
+                if(position ==0){
+                    list.get(position).visible = true;
+                }
+                if (position == 0 && list.size()>1) {
+                    list.get(position).visible = true;
+                    list.get(position + 1).visible = false;
+                } else if (position > 0 && position < list.size() - 1) {
+                    list.get(position - 1).visible = false;
+                    list.get(position).visible = true;
+                    list.get(position + 1).visible = false;
+                } else {
+                    list.get(position - 1).visible = false;
+                    list.get(position).visible = true;
+                }
             }
-            if (position == 0 && list.size()>1) {
-                list.get(position).visible = true;
-                list.get(position + 1).visible = false;
-            } else if (position > 0 && position < list.size() - 1) {
-                list.get(position - 1).visible = false;
-                list.get(position).visible = true;
-                list.get(position + 1).visible = false;
-            } else {
-                list.get(position - 1).visible = false;
-                list.get(position).visible = true;
-            }
-        }
-        adapter.notifyDataSetChanged();
+            subscriber.onNext(position);
+            subscriber.onCompleted();
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.computation())
+                .subscribe(response -> {
+                    adapter.notifyDataSetChanged();
+                });
+
     }
 
-    public void updatedView(){
+    public void updatedView(int postion){
         for (int i = 0 ; i < list.size() ; i++){
-            if (i== llm.getCenterItemPosition()){
+            if (i== postion){
                 list.get(i).visible = true ;
             }
             else{
