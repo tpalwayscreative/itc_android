@@ -6,9 +6,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp">
-        <ImageView
-            android:id="@+id/imgColor"
-            android:background="#7FFECA11"
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/llItems"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
