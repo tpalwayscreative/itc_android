@@ -5,21 +5,22 @@
     android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp">
         <ImageView
             android:id="@+id/imgColor"
-            android:background="@color/colorAccent"
+            android:background="#7FFECA11"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="110dp" />
         <ImageView
-            android:visibility="invisible"
             android:id="@+id/imgColorMain"
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/colorPrimary"
-            android:layout_height="120dp" />
+            android:background="@drawable/bg_button_rounded_gray"
+            android:alpha="0.5"
+            android:layout_height="150dp" />
         <TextView
             android:id="@+id/tvCount"
             android:layout_margin="20dp"

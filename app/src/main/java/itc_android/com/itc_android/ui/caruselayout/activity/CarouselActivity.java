@@ -51,6 +51,7 @@ public class CarouselActivity extends AppCompatActivity implements CarouselAdapt
         recyclerView.setHasFixedSize(true);
         recyclerView.addOnScrollListener(new CenterScrollListener());
         llm.setMaxVisibleItems(3);
+        llm.setMeasurementCacheEnabled(false);
         llm.setPostLayoutListener(new CarouselZoomPostLayoutListener());
         adapter = new CarouselAdapter(getLayoutInflater(),this,this);
         recyclerView.setAdapter(adapter);
