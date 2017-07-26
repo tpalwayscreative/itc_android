@@ -85,6 +85,23 @@ public class RealmController {
         realm.commitTransaction();
     }
 
+    public void mEditItem(int position,Palindrome palindrome){
+        RealmResults<Palindrome> results = realm.where(Palindrome.class).findAll();
+        realm.beginTransaction();
+        results.get(position).setId(palindrome.getId());
+        results.get(position).setValue(palindrome.getValue());
+        results.get(position).setResult(palindrome.getResult());
+        realm.commitTransaction();
+    }
+
+    public void mDeleteItem(int position){
+        RealmResults<Palindrome> results = realm.where(Palindrome.class).findAll();
+        realm.beginTransaction();
+        results.remove(position);
+        realm.commitTransaction();
+    }
+
+
 
     //query a single item with the given id
     public Palindrome getBook(String id) {
