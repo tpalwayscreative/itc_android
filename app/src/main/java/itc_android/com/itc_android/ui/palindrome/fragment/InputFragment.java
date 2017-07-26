@@ -18,6 +18,7 @@ import itc_android.com.itc_android.R;
 import itc_android.com.itc_android.common.utils.Utils;
 import itc_android.com.itc_android.ui.ftpconnection.activity.FTPConnectionActivity;
 import itc_android.com.itc_android.ui.histories.activity.HistoriesActivity;
+import itc_android.com.itc_android.ui.printtxt.PrintFileActivity;
 
 
 /**
@@ -65,6 +66,12 @@ public class InputFragment extends Fragment {
     @OnClick(R.id.btnShowHistories)
     public void onClickShowHistories(){
         Intent i = new Intent(getContext(), HistoriesActivity.class);
+        startActivity(i);
+    }
+
+    @OnClick(R.id.btnPrintTxt)
+    public void onPrintFileTxt(){
+        Intent i = new Intent(getContext(), PrintFileActivity.class);
         startActivity(i);
     }
 

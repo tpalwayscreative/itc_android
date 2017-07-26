@@ -67,11 +67,6 @@ public class RealmController {
 
     //find all objects in the Book.class
     public RealmResults<Palindrome> getBooks() {
-
-        if (realm != null)
-        {
-            Log.d("action","This action is existing");
-        }
         return realm.where(Palindrome.class).findAll();
     }
 

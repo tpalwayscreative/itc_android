@@ -58,9 +58,11 @@ dependencies {
     compile 'io.realm:realm-android:0.82.1'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'commons-net:commons-net:3.3'
+    compile 'eu.chainfire:libsuperuser:1.0.0.+'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
+
 
 
 

@@ -24,7 +24,8 @@
         <activity android:name=".ui.histories.activity.HistoriesActivity" />
         <activity android:name=".ui.ftpconnection.activity.FTPConnectionActivity" />
         <activity android:name=".ui.caruselayout.activity.CarouselActivity" />
-        <activity android:name=".ui.palindrome.activity.MainActivity"></activity>
+        <activity android:name=".ui.palindrome.activity.MainActivity" />
+        <activity android:name=".ui.printtxt.PrintFileActivity"></activity>
     </application>
 
 </manifest>
