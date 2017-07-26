@@ -62,8 +62,8 @@ public class CarouselAdapter extends BaseAdapter<CCarousel,BaseHolder> {
             this.position = position ;
             tvCount.setText(data.id);
             PixelGridView pixelGrid = new PixelGridView(activity);
-            pixelGrid.setNumColumns(2);
-            pixelGrid.setNumRows(5);
+            pixelGrid.setNumColumns(1);
+            pixelGrid.setNumRows(1);
             llItems.addView(pixelGrid);
             imgMainColor.setVisibility(data.visible ? View.VISIBLE : View.INVISIBLE);
             Log.d(TAG,position+"");

@@ -75,6 +75,17 @@ public class RealmController {
         return realm.where(Palindrome.class).findAll();
     }
 
+    //Inserting epc to realm data
+    public void mInsetBook(Palindrome protocol){
+        if (realm == null){
+            return;
+        }
+        realm.beginTransaction();
+        realm.copyToRealm(protocol);
+        realm.commitTransaction();
+    }
+
+
     //query a single item with the given id
     public Palindrome getBook(String id) {
         return realm.where(Palindrome.class).equalTo("id", id).findFirst();

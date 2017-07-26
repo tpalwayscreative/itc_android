@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity implements InputFragment.Lis
     private InputFragment inputFragment ;
     private ResultFragment resultFragment ;
     private FragmentManager fragmentManager ;
-    private Realm realm ;
+
+    private RealmController realmController ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements InputFragment.Lis
         resultFragment.setListenerResult(this);
         onDefault();
         //get realm instance
-        this.realm = RealmController.with(getApplication()).getRealm();
+        this.realmController = RealmController.with(getApplication());
     }
 
     public void onDefault(){
@@ -54,11 +56,9 @@ public class MainActivity extends AppCompatActivity implements InputFragment.Lis
         book.setId(RealmController.getInstance().getBooks().size() + System.currentTimeMillis() + "");
         book.setValue(input);
         book.setResult(result);
-
-        realm.beginTransaction();
-        realm.copyToRealm(book);
-        realm.commitTransaction();
-
+        if (realmController.getBook(RealmController.getInstance().getBooks().size() + System.currentTimeMillis() + "")==null){
+            realmController.mInsetBook(book);
+        }
         resultFragment.setArguments(bundle);
         fragmentManager.beginTransaction()
                 .replace(R.id.flMain,resultFragment,resultFragment.getTag())
